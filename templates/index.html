@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prix des billets d'avion</title>
+<style>
+  body { font-family: system-ui, sans-serif; background: #f5f6f8; color: #14181f; margin: 0; }
+  main { max-width: 640px; margin: 40px auto; background: #fff; border: 1px solid #e2e5ea; padding: 28px; }
+  h1 { font-size: 24px; margin: 0 0 18px; color: #0f2a4a; }
+  form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  label { display: grid; gap: 4px; font-size: 13px; color: #5f6773; }
+  select, input { font: 16px system-ui; padding: 8px; border: 1px solid #cfd5dd; }
+  button { grid-column: 1 / -1; padding: 11px; background: #0f2a4a; color: #fff; border: 0; font-weight: 600; cursor: pointer; }
+  .res { margin-top: 20px; font-size: 22px; font-weight: 600; color: #0f2a4a; }
+  .err { margin-top: 20px; color: #a33a2a; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Prix d'un billet d'avion</h1>
+  <form method="post">
+    <label>Compagnie<select name="airline">{% for a in airlines %}<option value="{{ a }}" {% if form.get('airline', 'Vistara') == a %}selected{% endif %}>{{ a.replace('_', ' ') }}</option>{% endfor %}</select></label>
+    <label>Classe<select name="class"><option value="Economy">Économique</option><option value="Business" {% if form.get('class') == 'Business' %}selected{% endif %}>Affaires</option></select></label>
+    <label>Départ<select name="source_city">{% for c in cities %}<option {% if form.get('source_city', 'Delhi') == c %}selected{% endif %}>{{ c }}</option>{% endfor %}</select></label>
+    <label>Arrivée<select name="destination_city">{% for c in cities %}<option {% if form.get('destination_city', 'Mumbai') == c %}selected{% endif %}>{{ c }}</option>{% endfor %}</select></label>
+    <label>Escales<select name="stops">{% for v, t in [('0', 'Direct'), ('1', '1 escale'), ('2', '2 ou plus')] %}<option value="{{ v }}" {% if form.get('stops') == v %}selected{% endif %}>{{ t }}</option>{% endfor %}</select></label>
+    <label>Heure d'arrivée<select name="arrival_time">{% for a in arrival %}<option {% if form.get('arrival_time', 'Morning') == a %}selected{% endif %}>{{ a }}</option>{% endfor %}</select></label>
+    <label>Durée (heures)<input name="duration" type="number" step="0.01" min="0.8" max="50" value="{{ form.get('duration', '2.25') }}" required></label>
+    <label>Jours avant le départ<input name="days_left" type="number" min="1" max="49" value="{{ form.get('days_left', '15') }}" required></label>
+    <button type="submit">Prédire le prix</button>
+  </form>
+  {% if result is not none %}<p class="res">Prix estimé : {{ "{:,}".format(result).replace(",", " ") }} ₹</p>{% endif %}
+  {% if error %}<p class="err">{{ error }}</p>{% endif %}
+</main>
+</body>
+</html>

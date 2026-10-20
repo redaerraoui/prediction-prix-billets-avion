@@ -1,0 +1,16 @@
+{
+    "stops": 0,
+    "duration": 2.25,
+    "days_left": 15,
+    "arrival_time": 2,
+    "source_city_Delhi": 1,
+    "source_city_Mumbai": 0,
+    "destination_city_Delhi": 0,
+    "destination_city_Mumbai": 1,
+    "airline_Air_India": 0,
+    "airline_GO_FIRST": 0,
+    "airline_Indigo": 0,
+    "airline_SpiceJet": 0,
+    "airline_Vistara": 1,
+    "class_Economy": 1
+}

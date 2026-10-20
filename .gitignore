@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+flight_price_model.pkl
+.ipynb_checkpoints/
