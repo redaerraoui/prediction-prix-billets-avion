@@ -2,7 +2,7 @@
 
 Projet de Big Data réalisé par **Reda Erraoui**, élève ingénieur à l'ENSA Agadir, filière Finance et Ingénierie Décisionnelle.
 
-**[Essayer le simulateur en ligne](https://redae03.github.io/#simulateur-vols)** · **[Lire le notebook (PDF)](rapport.pdf)**
+**[Essayer le simulateur en ligne](https://redaerraoui.github.io/simulateurs/prix-billets.html)** · **[Lire le notebook (PDF)](rapport.pdf)**
 
 ## Données
 
@@ -52,4 +52,4 @@ python app.py          # puis ouvrir http://127.0.0.1:5000
 
 ## Contact
 
-Reda Erraoui · [Portfolio](https://redae03.github.io) · redaerraouie@gmail.com
+Reda Erraoui · [Portfolio](https://redaerraoui.github.io) · redaerraouie@gmail.com
